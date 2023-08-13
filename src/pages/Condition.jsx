@@ -7,7 +7,7 @@ export default function Condition() {
       <div>
         <Navbar />
       </div>
-      <div className="container">
+      <div className= "container">
         Term and Conditions
       </div>
     </>
