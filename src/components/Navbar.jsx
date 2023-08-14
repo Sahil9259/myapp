@@ -24,19 +24,22 @@ export default function Navbar() {
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <Link
-                  className="nav-link active"
+                  className="nav-link active fa fa-home"
                   aria-current="page"
                   to="/home"
                 >
-                  Home
+                  {/* Home */}
                 </Link>
               </li>
             </ul>
             <form className="d-flex">
-              <Link className="btn mx-1 " to="/login">
+              <Link className=" btn mx-1 fa fa-user-alt"></Link>
+              <Link className="btn mx-1 fa fa-icon " to="/login">
                 Login
               </Link>
-              <Link className="btn mx-1" to="/signup">
+              <Link className=" btn mx-1 fa fa-sign-out-alt"></Link>
+              
+              <Link className="btn mx-1 fa fa-icon" to="/signup">
                 Signup
               </Link>
             </form>

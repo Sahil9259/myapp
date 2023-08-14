@@ -1,7 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 // import Navbar from "../components/Navbar";
 export default function Signup() {
+  const [name, setName] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const response = await fetch("http://localhost:5000/api/register", {
+      method : 'POST',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        password,
+      }),
+    })
+    const data = await response.json();
+    console.log(data); 
+    // e.preventDefault();
+    // try {
+    //   const result = await axios.post(``, { name, email, password });
+    //   console.log("Response:", result.data);
+    // } catch (err) {
+    //   console.error("Error:", err);
+    // }
+  };
+
   return (
     <section className="vh-100" style={{ backgroundColor: "#eee" }}>
       <div className="container h-100">
@@ -15,7 +43,7 @@ export default function Signup() {
                       Sign up
                     </p>
 
-                    <form className="mx-1 mx-md-4">
+                    <form className="mx-1 mx-md-4" onSubmit={handleSubmit}>
                       <div className="d-flex flex-row align-items-center mb-4">
                         <i className="fas fa-user fa-lg me-3 fa-fw"></i>
                         <div className="form-outline flex-fill mb-0">
@@ -24,6 +52,7 @@ export default function Signup() {
                             id="form3Example1c"
                             className="form-control"
                             placeholder="Your name"
+                            onChange={(e) => setName(e.target.value)}
                           />
                         </div>
                       </div>
@@ -36,6 +65,7 @@ export default function Signup() {
                             id="form3Example3c"
                             className="form-control"
                             placeholder="Your email"
+                            onChange={(e) => setEmail(e.target.value)}
                           />
                         </div>
                       </div>
@@ -48,6 +78,7 @@ export default function Signup() {
                             id="form3Example4c"
                             className="form-control"
                             placeholder="Your password"
+                            onChange={(e) => setPassword(e.target.value)}
                           />
                         </div>
                       </div>
@@ -79,16 +110,11 @@ export default function Signup() {
                       </div>
 
                       <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                        <Link
-                          to='/home'
-                          className="btn btn-primary btn-lg"
-                        >
-                          Sign up
-                        </Link>
+                      <button type="submit" className="m-3 btn btn-success">Submit</button>
                         <Link
                           to="/login"
-                          style={{marginLeft:'2rem'}}
-                          className="btn btn-primary btn-lg"
+                          // style={{ marginLeft: "2rem" }}
+                          className="btn btn-success "
                         >
                           Sign in
                         </Link>
