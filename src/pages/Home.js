@@ -2,6 +2,8 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router";
 import { useUserAuth } from "../utils/UserAuthContext";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const Home = () => {
   const { logOut, user } = useUserAuth();
@@ -16,6 +18,7 @@ const Home = () => {
   };
   return (
     <>
+    <Navbar/>
       <div className="p-4 box mt-3 text-center">
         Hello Welcome <br />
         {user && user.email}
@@ -25,6 +28,7 @@ const Home = () => {
           Log out
         </Button>
       </div>
+      <Footer/>
     </>
   );
 };

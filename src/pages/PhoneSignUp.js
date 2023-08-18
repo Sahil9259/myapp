@@ -43,7 +43,8 @@ const PhoneSignUp =() =>{
   }
   return (
     <>
-      <div className="p-4 box">
+      <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
+        <div className="text-center">
         <h2 className="mb-3">Firebase Phone Auth</h2>
         {error && <Alert variant="danger">{error}</Alert>}
         <Form onSubmit={getOtp} style={{display: !flag?"block":"none"}}>
@@ -79,6 +80,7 @@ const PhoneSignUp =() =>{
           </div>
 
         </Form>
+      </div>
       </div>
     </>
   );
