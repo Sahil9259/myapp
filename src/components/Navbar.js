@@ -1,12 +1,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router";
+import { useUserAuth } from "../utils/UserAuthContext";
 
 export default function Navbar() {
+  const { logOut, user } = useUserAuth();
+  const navigate = useNavigate();
+  const handleLogout = async () => {
+    try {
+      await logOut();
+      navigate("/");
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   return (
     <div >
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
-          <Link className="navbar-brand mb-0 h1" to="/">
+          <Link className="navbar-brand mb-0 h1" to="/home">
             Navbar
           </Link>
           <button
@@ -33,15 +46,8 @@ export default function Navbar() {
               </li>
             </ul>
             <form className="d-flex">
-              <Link className=" btn mx-1 fa fa-user-alt"></Link>
-              <Link className="btn mx-1 fa fa-icon " to="/login">
-                Login
-              </Link>
-              <Link className=" btn mx-1 fa fa-sign-out-alt"></Link>
-              
-              <Link className="btn mx-1 fa fa-icon" to="/signup">
-                Signup
-              </Link>
+              <i className=" btn mx-1 fa fa-icon">Welcome {user && user.displayName}</i>
+              <Button className=" btn mx-1 fa fa-sign-out-alt" onClick={handleLogout}></Button>
             </form>
           </div>
         </div>

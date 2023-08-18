@@ -5,6 +5,7 @@ import { Button } from "react-bootstrap";
 import { useUserAuth } from "../utils/UserAuthContext";
 
 const Signup = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [password, setPassword] = useState("");
@@ -15,8 +16,8 @@ const Signup = () => {
     e.preventDefault();
     setError("");
     try {
-      await signUp(email, password);
-      navigate("/");
+      await signUp(name,email, password);
+      navigate("/home");
     } catch (err) {
       setError(err.message);
     }
@@ -28,6 +29,13 @@ const Signup = () => {
         <div className="text-center">
           <h2 className="mb-3">Firebase Auth Signup</h2>
           {error && <Alert variant="danger">{error}</Alert>}
+          <Form.Group className="mb-3" controlId="formBasicName">
+              <Form.Control
+                type="text"
+                placeholder="Your Name"
+                onChange={(e) => setName(e.target.value)}
+              />
+            </Form.Group>
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Control

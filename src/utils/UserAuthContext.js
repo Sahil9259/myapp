@@ -8,6 +8,8 @@ import {
   signInWithPopup,
   RecaptchaVerifier,
   signInWithPhoneNumber,
+  sendEmailVerification,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "./firebase";
 
@@ -18,9 +20,24 @@ export function UserAuthContextProvider({ children }) {
   function logIn(email, password) {
     return signInWithEmailAndPassword(auth, email, password);
   }
-  function signUp(email, password) {
-    return createUserWithEmailAndPassword(auth, email, password);
-  }
+  // function signUp(email, password) {
+  //   return createUserWithEmailAndPassword(auth, email, password);
+  // }
+  const signUp = async (name, email, password) => {
+    try {
+      await createUserWithEmailAndPassword(auth, email, password).catch((err) =>
+        console.log(err)
+      );
+      await sendEmailVerification(auth.currentUser).catch((err) =>
+        console.log(err)
+      );
+      await updateProfile(auth.currentUser, { displayName: name }).catch(
+        (err) => console.log(err)
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  };
   function logOut() {
     return signOut(auth);
   }
