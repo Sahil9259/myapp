@@ -37,7 +37,7 @@ const Login = () => {
     <>
       <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh'}}>
         <div className="text-center" style={{width:"400px" , margin:"0 auto" }}>
-          <h2 className="mb-3">Firebase Auth Login</h2>
+          <h2 className="mb-3">Login</h2>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="formBasicEmail">

@@ -27,7 +27,7 @@ const Signup = () => {
     <>
       <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
         <div className="text-center">
-          <h2 className="mb-3">Firebase Auth Signup</h2>
+          <h2 className="mb-3">Signup</h2>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form.Group className="mb-3" controlId="formBasicName">
               <Form.Control

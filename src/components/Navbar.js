@@ -46,8 +46,13 @@ export default function Navbar() {
               </li>
             </ul>
             <form className="d-flex">
-              <i className=" btn mx-1 fa fa-icon">Welcome {user && user.displayName}</i>
-              <Button className=" btn mx-1 fa fa-sign-out-alt" onClick={handleLogout}></Button>
+              <i className=" btn mx-1 fa fa-icon">Welcome{" "}
+                {user
+                  ? user.displayName === null
+                    ? user.phoneNumber
+                    : user.displayName
+                  : ""}</i>
+              <Button className=" btn btn-danger mx-1 fa fa-sign-out-alt" onClick={handleLogout}></Button>
             </form>
           </div>
         </div>
