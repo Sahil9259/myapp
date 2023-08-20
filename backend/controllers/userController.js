@@ -65,6 +65,11 @@ module.exports.setAvatar = async (req, res, next) => {
       },
       { new: true }
     );
+
+    if (!userData) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
     return res.json({
       isSet: userData.isAvatarImageSet,
       image: userData.avatarImage,
@@ -73,6 +78,7 @@ module.exports.setAvatar = async (req, res, next) => {
     next(ex);
   }
 };
+
 
 module.exports.logOut = (req, res, next) => {
   try {
