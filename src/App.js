@@ -1,40 +1,18 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // Import BrowserRouter as Router
-import "./App.css";
-import Home from "./pages/Home";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import SetAvatar from "./components/SetAvatar";
+import Chat from "./pages/Chat";
 import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import PhoneSignUp from "./pages/PhoneSignUp";
-import ProtectedRoute from "./components/ProtectRoute";
-import { UserAuthContextProvider } from "./utils/UserAuthContext";
-
-function App() {
+import Register from "./pages/Register";
+export default function App() {
   return (
-    <Container >
-      <Row>
-        <Col>
-          <UserAuthContextProvider>
-            <Router>
-              <Routes>
-                <Route
-                  path="/home"
-                  element={
-                    <ProtectedRoute>
-                      <Home />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route path="/" element={<Login  />} />
-                <Route path="/signup" element={<Signup/>} />
-                <Route path="/phonesignup" element={<PhoneSignUp />} />
-              </Routes>
-            </Router>
-          </UserAuthContextProvider>
-        </Col>
-      </Row>
-    </Container>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        {/* <Route path="/setAvatar" element={<SetAvatar />} /> */}
+        <Route path="/" element={<Chat />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
-
-export default App;
