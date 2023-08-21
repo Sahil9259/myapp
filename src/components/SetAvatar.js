@@ -56,39 +56,6 @@ export default function SetAvatar() {
     }
   };
 
-  // const setProfilePicture = async () => {
-  //   if (selectedAvatar === undefined) {
-  //     toast.error("Please select an avatar", toastOptions);
-  //   } else {
-  //     const user = await JSON.parse(
-  //       localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
-  //     );
-
-  //     const { data } = await axios.post(`${setAvatarRoute}/${user._id}`, {
-  //       image: avatars[selectedAvatar],
-  //     });
-
-  //     if (data.isSet) {
-  //       user.isAvatarImageSet = true;
-  //       user.avatarImage = data.image;
-  //       localStorage.setItem(
-  //         process.env.REACT_APP_LOCALHOST_KEY,
-  //         JSON.stringify(user)
-  //       );
-  //       navigate("/");
-  //     } else {
-  //       toast.error("Error setting avatar. Please try again.", toastOptions);
-  //     }
-  //   }
-  // };
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     // You can await here
-  //     const response = await MyAPI.getData(someId);
-  //     // ...
-  //   }
-  //   fetchData();
-  // }, [someId]);
   useEffect(() => {
     async function fetchData() {
       const data = [];
@@ -127,7 +94,7 @@ export default function SetAvatar() {
                   <img
                     src={`data:image/svg+xml;base64,${avatar}`}
                     alt="avatar"
-                    key={avatar}
+                    key={avatar.id}
                     onClick={() => setSelectedAvatar(index)}
                   />
                 </div>
