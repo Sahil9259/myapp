@@ -24,8 +24,6 @@ export default function Chat() {
             localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
           )
         );
-        console.log("@");
-        console.log(currentUser);
       }
     }
     handleSubmit();
@@ -47,7 +45,7 @@ export default function Chat() {
           // console.log(currentUser._id)
           const data = await axios.get(`${allUsersRoute}/${currentUser._id}`);
           setContacts(data.data);
-          console.log(data.data);
+          // console.log(data.data);
         } else {
           navigate("/setAvatar");
         }
